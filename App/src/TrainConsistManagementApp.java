@@ -1,28 +1,29 @@
-import java.util.*;
-public class TrainConsistManagementApp{
-    public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
-        }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+import java.util.LinkedHashSet;
+
+public class TrainConsistManagementApp {
+
+    public static void main(String[] args) {
+
+        // Welcome message
+        System.out.println("=== Train Consist Management App ===");
+
+        // Create LinkedHashSet for train formation (ordered + unique)
+        LinkedHashSet<String> trainFormation = new LinkedHashSet<>();
+
+        // Add bogies
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
+
+        // Attempt to add duplicate bogie
+        trainFormation.add("Sleeper"); // duplicate (will be ignored)
+
+        // Display final formation
+        System.out.println("Final Train Formation (Insertion Order Preserved, No Duplicates):");
+        System.out.println(trainFormation);
+
+        // Program continues
+        System.out.println("System is ready for further operations...");
     }
 }
