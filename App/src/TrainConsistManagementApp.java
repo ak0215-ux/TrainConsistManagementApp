@@ -1,28 +1,39 @@
 import java.util.*;
+import java.util.stream.Stream;
+
 public class TrainConsistManagementApp{
+    static class GoodsBogie{
+        String type;
+        String cargo;
+
+        GoodsBogie(String type,String cargo){
+            this.type = type;
+            this.cargo = cargo;
+        }
+    }
     public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
+        System.out.println("==================================================");
+        System.out.println("UC12 - Safety Compliance Check for Goods Bogies");
+        System.out.println("==================================================");
         System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+        System.out.println("Goods Bogies in Train: ");
+        GoodsBogie g1 = new GoodsBogie("Cylindrical","Petroleum");
+        GoodsBogie g2 = new GoodsBogie("Open","Coal");
+        GoodsBogie g3 = new GoodsBogie("Box","Grain");
+        GoodsBogie g4 = new GoodsBogie("Cylindrical","Coal");
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
+        goodsBogies.add(g1);
+        goodsBogies.add(g2);
+        goodsBogies.add(g3);
+        goodsBogies.add(g4);
+        for(GoodsBogie goodBogie : goodsBogies){
+            System.out.println(goodBogie.type+ " -> " +goodBogie.cargo);
         }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+        System.out.println();
+        boolean result = goodsBogies.stream().allMatch(b -> Objects.equals(b.cargo, "Petroleum"));
+        System.out.println("Safety Compliance Status: " +result);
+        System.out.println("Train formation is NOT SAFE.");
+        System.out.println();
+        System.out.println("UC12 safety validation completed...");
     }
 }
