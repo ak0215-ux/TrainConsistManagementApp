@@ -1,28 +1,39 @@
-import java.util.*;
-public class TrainConsistManagementApp{
-    public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class TrainConsistManagementApp {
+    static class Bogie {
+        String name;
+        int capacity;
+
+        Bogie(String name, int capacity) {
+            this.name = name;
+            this.capacity = capacity;
+        }
+    }
+    public static void main(String[] args) {
+        System.out.println("===================================================");
+        System.out.println("UC11 - Validate Train ID & Cargo Codes (Regex)");
+        System.out.println("===================================================");
         System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
-        }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Train ID (Format: TRN-1234): ");
+        String trainId = scanner.nextLine();
+        System.out.print("Enter Cargo Code (Format: PET-AB): ");
+        String cargoCode = scanner.nextLine();
+        System.out.println();
+        System.out.println("Validation Results: ");
+
+        Pattern pattern1 = Pattern.compile(trainId);
+        Pattern pattern2 = Pattern.compile(cargoCode);
+
+        boolean isTrainIdValid = trainId.matches("[A-Z]+-\\d+");
+        boolean isCargoIdValid = cargoCode.matches("[A-Z]+-[A-Z]{2}");
+        System.out.println("Train ID Valid: " +isTrainIdValid);
+        System.out.println("Cargo Code Valid: " +isCargoIdValid);
+        System.out.println();
+        System.out.println("UC11 validation completed...");
+        scanner.close();
     }
 }
