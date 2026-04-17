@@ -1,28 +1,30 @@
-import java.util.*;
-public class TrainConsistManagementApp{
-    public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+import java.util.HashMap;
+import java.util.Map;
+
+public class TrainConsistManagementApp {
+
+    public static void main(String[] args) {
+
+        // Welcome message
+        System.out.println("=== Train Consist Management App ===");
+
+        // Create HashMap to store bogie and its capacity
+        Map<String, Integer> bogieCapacityMap = new HashMap<>();
+
+        // Insert bogie-capacity pairs
+        bogieCapacityMap.put("Sleeper", 72);
+        bogieCapacityMap.put("AC Chair", 54);
+        bogieCapacityMap.put("First Class", 24);
+
+        // Display bogie capacity details
+        System.out.println("Bogie Capacity Details:");
+
+        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
+            System.out.println("Bogie: " + entry.getKey() +
+                    " | Capacity: " + entry.getValue());
         }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+
+        // Program continues
+        System.out.println("System is ready for further operations...");
     }
 }
