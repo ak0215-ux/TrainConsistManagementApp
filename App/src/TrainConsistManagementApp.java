@@ -1,28 +1,30 @@
 import java.util.*;
 public class TrainConsistManagementApp{
     public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+        System.out.println("=====================================");
+        System.out.println("UC18 - Linear Search for Bogie ID");
+        System.out.println("=====================================");
+
+        String[] bogieIds = {"BG101","BG205","BG309","BG412","BG550"};
+        String searchId = "BG309";
+
+        System.out.println("\nAvailable Bogie IDs: ");
+        for(String id : bogieIds){
+            System.out.println(id);
         }
         boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
+        for(String id : bogieIds){
+            if(id.equals(searchId)){
                 found = true;
                 break;
             }
         }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
+        if(found){
+            System.out.println("\nBogie " +searchId+ " found in train consist.");
         }
         else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
+            System.out.println("\nBogie" +searchId+ " not found in train consist.");
         }
-        System.out.println("\nUC20 execution completed...");
+        System.out.println("\nUC18 search completed...");
     }
 }
