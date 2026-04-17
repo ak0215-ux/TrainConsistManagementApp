@@ -1,28 +1,20 @@
-import java.util.*;
+import java.util.Arrays;
 public class TrainConsistManagementApp{
     public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
-        }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+        System.out.println("==============================================");
+        System.out.println("UC17 - Sort Bogie Names Using Arrays.sort()");
+        System.out.println("==============================================");
+
+        String[] bogieNames = {"Sleeper" , "AC Chair" , "First Class" , "General" , "Luxury"};
+
+        System.out.println("\nOriginal Bogie Names: ");
+        System.out.print(Arrays.toString(bogieNames));
+
+        Arrays.sort(bogieNames);
+
+        System.out.println("\n\nSorted Bogie Names (Alphabetical): ");
+        System.out.print(Arrays.toString(bogieNames));
+
+        System.out.println("\n\nUC17 sorting completed...");
     }
 }
