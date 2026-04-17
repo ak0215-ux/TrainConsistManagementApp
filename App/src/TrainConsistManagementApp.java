@@ -1,28 +1,21 @@
-import java.util.*;
-public class TrainConsistManagementApp{
-    public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
-        }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
-            }
-        }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+import java.util.ArrayList;
+import java.util.List;
+
+public class TrainConsistManagementApp {
+
+    public static void main(String[] args) {
+
+        // Welcome message
+        System.out.println("=== Train Consist Management App ===");
+
+        // Initialize an empty list of bogies (dynamic initialization)
+        List<String> trainConsist = new ArrayList<>();
+
+        // Display initial bogie count
+        System.out.println("Train consist initialized.");
+        System.out.println("Initial number of bogies: " + trainConsist.size());
+
+        // Program continues (placeholder for future use cases)
+        System.out.println("System is ready for further operations...");
     }
 }
