@@ -2,27 +2,28 @@ import java.util.*;
 public class TrainConsistManagementApp{
     public static void main(String[] args){
         System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
+        System.out.println("UC16 - Manual Sorting using Bubble Sort");
         System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+
+        int[] capacities = {72,56,24,70,60};
+
+        System.out.println("\nOriginal Capacities: ");
+        for (int c : capacities){
+            System.out.print(c+ " ");
         }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
+        for(int i = 0; i < capacities.length - 1; i++){
+            for(int j = 0; j < capacities.length - 1 - i; j++){
+                if(capacities[j] > capacities[j+1]){
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j+1];
+                    capacities[j+1] = temp;
+                }
             }
         }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
+        System.out.println("\n\nSorted Capacities (Ascending):");
+        for (int c : capacities){
+            System.out.print(c+ " ");
         }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+        System.out.println("\n\nUC16 sorting completed...");
     }
 }
