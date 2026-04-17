@@ -1,28 +1,41 @@
 import java.util.*;
+
 public class TrainConsistManagementApp{
-    public static void main(String[] args){
-        System.out.println("==========================================");
-        System.out.println("UC20 - Exception Handling During Search");
-        System.out.println("==========================================");
-        System.out.println();
-        String[] bogieIds = {};
-        String searchId = "BG101";
-        if (bogieIds.length == 0){
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+    static class CargoSafetyException extends RuntimeException{
+        public CargoSafetyException(String message){
+            super(message);
         }
-        boolean found = false;
-        for (String id : bogieIds){
-            if (id.equals(searchId)){
-                found = true;
-                break;
+    }
+    static class GoodsBogie{
+        String shape;
+        String cargo;
+
+        GoodsBogie(String shape){
+            this.shape = shape;
+        }
+        void assignCargo(String cargo){
+            try{
+                if (cargo.equals("Petroleum") && shape.equals("Rectangular")){
+                    throw new CargoSafetyException("Unsafe cargo assignment");
+                }
+                System.out.println("\nCargo assigned successfully -> " +cargo);
+            }catch (CargoSafetyException e){
+                System.out.println("\nError: " +e.getMessage());
+            }finally {
+                System.out.println("Cargo validation completed for " +shape+ " bogie");
             }
         }
-        if (found){
-            System.out.println("\nBogie " +searchId+ " found using search operation.");
-        }
-        else{
-            System.out.println("\nBogie " +searchId+ " not found using search operation.");
-        }
-        System.out.println("\nUC20 execution completed...");
+    }
+    public static void main(String[] args){
+        System.out.println("=========================================");
+        System.out.println("UC15 - Safe Cargo Assignment ");
+        System.out.println("=========================================");
+
+        GoodsBogie g1 = new GoodsBogie("Cylindrical");
+        g1.assignCargo("Petroleum");
+        GoodsBogie g2 = new GoodsBogie("Rectangular");
+        g2.assignCargo("Petroleum");
+
+        System.out.println("\nUC15 runtime handling completed...");
     }
 }
